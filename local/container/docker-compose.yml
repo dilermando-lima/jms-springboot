@@ -1,0 +1,15 @@
+
+# docker-compose --env-file ./local/env/local.env  --file ./local/container/docker-compose.yml up # -d --build --force-recreate
+
+version: "3.9"
+
+services:
+    rabbitmq_ms:
+        image: rabbitmq:3-management
+        container_name: ${MSF_RABBIT_NAME_CONTAINER}
+        volumes:
+         - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+         - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
+        ports:
+         - ${RABBIT_PORT}:5672
+         - ${RABBIT_PORT_WEB}:15672

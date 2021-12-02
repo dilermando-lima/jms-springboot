@@ -1,0 +1,16 @@
+{
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "queues": [
+        {
+            "name": "queue-1",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {"x-max-length":5000,"ha-mode":"all","ha-sync-mode":	"automatic"}
+        }
+    ]
+}

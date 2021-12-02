@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "jms-springboot",
+            "console": "internalConsole",
+            "request": "launch",
+            "envFile": "${workspaceFolder}/local/env/local.env",
+            "mainClass": "com.example.jmsspringboot.Application",
+            "projectName": "jms-springboot"
+        }
+    ]
+}

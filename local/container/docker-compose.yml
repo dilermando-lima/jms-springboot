@@ -6,7 +6,7 @@ version: "3.9"
 services:
     rabbitmq_ms:
         image: rabbitmq:3-management
-        container_name: ${MSF_RABBIT_NAME_CONTAINER}
+        container_name: ${RABBIT_NAME_CONTAINER}
         volumes:
          - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
          - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json

@@ -1,10 +1,13 @@
 package com.example.jmsspringboot.service;
 
-import java.util.Map;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -15,8 +18,12 @@ public class MessageListener {
     static final Logger LOGGER = LoggerFactory.getLogger(MessageListener.class);
 
     @JmsListener(destination = "queue-1")
-    public void messageConsumer(@Headers Map<String, Object> messageAttributes,  @Payload String message) {
-        LOGGER.debug("Calling messageConsumer() :  messageAttributes = {} , message = {}" , messageAttributes , message );
+    public void messageConsumer(@Payload Message message,  @Headers MessageHeaders headers) throws JMSException {
+        LOGGER.debug("Calling messageConsumer()" );
+
+        LOGGER.debug("headers = {}",headers);
+        LOGGER.debug("message = {}", ((TextMessage) message ).getText());
+
     }
     
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "rabbit")
 public class RabbitProperties {
 
+    private Boolean listenerEnabled;
     private String user;
     private String pass;
     private String virtualhost;
@@ -43,6 +44,14 @@ public class RabbitProperties {
     public void setPort(Integer port) {
         this.port = port;
     }
+    public Boolean getListenerEnabled() {
+        return listenerEnabled;
+    }
+    public void setListenerEnabled(Boolean listenerEnabled) {
+        this.listenerEnabled = listenerEnabled;
+    }
+
+    
 
     
 }

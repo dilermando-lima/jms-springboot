@@ -4,6 +4,8 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 
+import com.example.jmsspringboot.properties.ListQueueNameProperties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
@@ -17,7 +19,7 @@ public class MessageListener {
 
     static final Logger LOGGER = LoggerFactory.getLogger(MessageListener.class);
 
-    @JmsListener(destination = "queue-1")
+    @JmsListener(destination = ListQueueNameProperties.KEY_ATTR_QUEUE_ANY_1)
     public void messageConsumer(@Payload Message message,  @Headers MessageHeaders headers) throws JMSException {
         LOGGER.debug("Calling messageConsumer()" );
 

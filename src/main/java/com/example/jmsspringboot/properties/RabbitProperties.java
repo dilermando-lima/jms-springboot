@@ -4,16 +4,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "rabbit")
+@ConfigurationProperties(prefix = "queue.rabbit")
 public class RabbitProperties {
 
-    private Boolean listenerEnabled;
     private String user;
     private String pass;
     private String virtualhost;
     private String host;
     private Integer port;
 
+    @Override
+    public String toString() {
+        return "RabbitProperties [" + (host != null ? "host=" + host + ", " : "")
+                + (pass != null ? "pass=" + pass + ", " : "") + (port != null ? "port=" + port + ", " : "")
+                + (user != null ? "user=" + user + ", " : "")
+                + (virtualhost != null ? "virtualhost=" + virtualhost : "") + "]";
+    }
     public String getUser() {
         return user;
     }
@@ -44,14 +50,6 @@ public class RabbitProperties {
     public void setPort(Integer port) {
         this.port = port;
     }
-    public Boolean getListenerEnabled() {
-        return listenerEnabled;
-    }
-    public void setListenerEnabled(Boolean listenerEnabled) {
-        this.listenerEnabled = listenerEnabled;
-    }
 
-    
-
-    
 }
+

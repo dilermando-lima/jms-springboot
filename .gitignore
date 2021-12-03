@@ -1,4 +1,5 @@
-HELP.md
 .gradle
 build/
+bin/
 
+local/env/local-private.env

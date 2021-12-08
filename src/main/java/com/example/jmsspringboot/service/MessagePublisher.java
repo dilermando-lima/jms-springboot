@@ -1,6 +1,7 @@
 package com.example.jmsspringboot.service;
 
 import java.util.Map;
+import java.util.UUID;
 
 import javax.jms.JMSException;
 
@@ -25,6 +26,11 @@ public class MessagePublisher {
         LOGGER.debug("Calling publish() : queueName = {} , message = {}", queueName , message );
 
         jmsTemplate.convertAndSend(queueName, message , postProcessor -> {
+
+            postProcessor.setJMSCorrelationID("DILO-" + UUID.randomUUID().toString());
+
+            LOGGER.debug("id_message_sent = {} ", postProcessor.getJMSCorrelationID());
+
             headers.entrySet().stream().forEach(header ->  
                     {
                         try {
